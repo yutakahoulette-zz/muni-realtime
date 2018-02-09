@@ -3,3 +3,24 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+svg {
+  background: #b7d3e0;
+}
+
+.streets path,
+.arteries path,
+.freeways path {
+  fill: none;
+  stroke: #bbbbbb;
+}
+
+.neighborhoods path {
+  stroke: #eee;
+  fill: #eee;
+}
+
+.route path {
+  fill: none;
+}
+
