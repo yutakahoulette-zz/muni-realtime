@@ -26,7 +26,6 @@ svg {
 
 .route path {
   fill: none;
-  stroke-opacity: 0.8;
   stroke-width: 0.5;
 }
 
@@ -41,7 +40,7 @@ svg {
 }
 
 circle {
-  transition: all 15000ms ease;
+  transition: cx 15000ms, cy 15000ms;
 }
 
 button {
