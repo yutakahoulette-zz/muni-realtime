@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import * as d3 from 'd3'
+import Neighborhoods from './Neighborhoods'
+import Routes from './Routes'
 
 class Map extends Component {
   state = {
@@ -89,37 +91,11 @@ class Map extends Component {
         <h1>Muni realtime</h1>
         <svg width={ this.state.chartWidth } 
             height={ this.state.chartHeight } >
-          {
-            <g className='neighborhoods'>
-              {
-                this.state.neighborhoods.map((d,ii) => (
-                  <path
-                    key={ `neighborhoods-path-${ ii }` }
-                    d={ d3.geoPath(this.projection())(d) }
-                  />
-                ))
-              }
-            </g>
-          }
-          {
-            Object.keys(this.state.routes).map((key, i) => {
-              const data = this.state.routes[key]
-              return !data.features
-                ? <g key={ `${key}-route-${ i }` }/>
-                : <g className={`route ${key}`}  key={ `${key}-route-${ i }` }>
-                    {
-                      data.features.map((f,ii) => (
-                        <path
-                          key={ `${key}-route-path-${ ii }` }
-                          d={ d3.geoPath(this.projection())(f) }
-                          stroke={this.state.routesHidden[key] ? 'white' :`#${data.color}`}
-                          strokeOpacity={this.state.routesHidden[key] ? '0' : '0.5'}
-                        />
-                      ))
-                    }
-                  </g>
-            })
-          }
+          <Neighborhoods data={this.state.neighborhoods} 
+            projection={ d3.geoPath(this.projection())} />
+          <Routes routes={this.state.routes} 
+            routesHidden={this.state.routesHidden}
+            projection={ d3.geoPath(this.projection())} />
           {
             Object.keys(this.state.vehicles).map((key, i) => {
               const data = this.state.vehicles[key]
