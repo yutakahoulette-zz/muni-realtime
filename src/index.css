@@ -40,6 +40,10 @@ svg {
   padding: .5rem;
 }
 
+circle {
+  transition: all 15000ms ease;
+}
+
 button {
   border-radius: 6px;
   cursor: pointer;

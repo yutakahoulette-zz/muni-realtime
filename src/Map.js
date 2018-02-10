@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import * as d3 from 'd3'
 
-class Map extends Component {
+class Map extends PureComponent {
   state = {
     neighborhoods: [],
     routes: {},
@@ -15,12 +15,14 @@ class Map extends Component {
       d3.json(url(), (resp) => {
         if (!resp.vehicle) return
         resp.vehicle.forEach(v => {
+          const id = v.id
           const vehicle = [v.lon, v.lat].map(Number)
           const routes = {...this.state.routes}
           const vehicles = routes[v.routeTag].vehicles
-          routes[v.routeTag].vehicles = (vehicles && vehicles.length)
-            ? vehicles.concat([vehicle]) 
-            : [vehicle]
+          if (!vehicles) {
+            routes[v.routeTag].vehicles = {}
+          }
+          routes[v.routeTag].vehicles[id] = vehicle
           this.setState({routes})
         })
       })
@@ -110,14 +112,15 @@ class Map extends Component {
                 ? <g key={ `${key}-vehicles-${ i }` }/>
                 : <g className='vehicles' key={ `${key}-vehicles-${ i }` }>
                     {
-                      data.vehicles.map((v,ii) => {
+                      Object.keys(data.vehicles).map((key,ii) => {
+                        const coords = this.projection()(data.vehicles[key])
                         return (
                             <circle
                             key={ `${key}-vehicles-path-${ ii }` }
                             r='4'
                             fill={`#${data.color}`}
-                            cx={this.projection()(v)[0]}
-                            cy={this.projection()(v)[1]}
+                            cx={coords[0]}
+                            cy={coords[1]}
                           />
                         )
                       })
