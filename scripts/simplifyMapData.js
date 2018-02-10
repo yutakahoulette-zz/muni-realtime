@@ -9,7 +9,7 @@ const write = (data, fileName) => {
   })
 }
 
-const simplify = (data, fileName)  => {
+const simplify = (data, fileName) => {
   log('simplifying', fileName)
   const rawFeatures = JSON.parse(data)['features']
   const simplifiedFeature = rawFeatures.reduce((arr, obj) => {
@@ -36,4 +36,3 @@ const readSimplifyWrite = (fileName) => {
 
 ['neighborhoods', 'streets', 'arteries', 'freeways']
   .map(readSimplifyWrite)
-

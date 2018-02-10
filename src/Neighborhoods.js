@@ -4,16 +4,15 @@ import PropTypes from 'prop-types'
 const Neighborhoods = ({data, projection}) => (
   <g className='neighborhoods'>
     {
-      data.map((d,ii) => (
+      data.map((d, ii) => (
         <path
-          key={ `neighborhoods-path-${ ii }` }
-          d={ projection(d) }
+          key={`neighborhoods-path-${ii}`}
+          d={projection(d)}
         />
       ))
     }
   </g>
 )
-
 
 Neighborhoods.propTypes = {
   data: PropTypes.array.isRequired,

@@ -1,23 +1,31 @@
 body {
   margin: 0;
-  font-size: 16px;
   font-family: sans-serif;
 }
 
-
-* {
-  box-sizing: border-box;
-}
-
-svg {
-  background: #b7d3e0;
-}
+* { box-sizing: border-box; }
 
 .container {
   width: 800px;
   margin: 0 auto;
   padding: 1rem;
 }
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+}
+
+.buttonWrapper { padding: .5rem; }
+
+button {
+  border-radius: 6px;
+  cursor: pointer;
+  border-width: 3px;
+}
+
+svg { background: #b7d3e0; }
 
 .neighborhoods path {
   stroke: #eee;
@@ -29,23 +37,4 @@ svg {
   stroke-width: 0.5;
 }
 
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 1rem;
-}
-
-.buttonWrapper {
-  padding: .5rem;
-}
-
-circle {
-  transition: cx 15000ms, cy 15000ms;
-}
-
-button {
-  border-radius: 6px;
-  cursor: pointer;
-  border-width: 3px;
-}
-
+circle { transition: cx 15000ms, cy 15000ms; }
