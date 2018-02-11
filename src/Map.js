@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import * as d3 from 'd3'
 import Neighborhoods from './Neighborhoods'
 import Routes from './Routes' 
 import Vehicles from './Vehicles'
 import Buttons from './Buttons'
 
-class Map extends PureComponent {
+class Map extends Component {
   state = {
     neighborhoods: [],
     routes: {},
@@ -97,7 +97,6 @@ class Map extends PureComponent {
     return (
       <div className='container'>
         <h1>Muni realtime</h1>
-        <h4>Submitted by Yutaka Houlette</h4>
         <svg width={ this.state.chartWidth } 
             height={ this.state.chartHeight } >
           <Neighborhoods data={this.state.neighborhoods} 

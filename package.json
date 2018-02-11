@@ -1,7 +1,4 @@
 {
-  "name": "muni-realtime",
-  "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "d3": "^4.13.0",
     "prop-types": "^15.6.0",
